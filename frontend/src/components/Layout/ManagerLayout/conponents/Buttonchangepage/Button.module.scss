@@ -1,0 +1,22 @@
+.btn-manage{
+    width: 130px;
+    height: 70px;
+    border: none;
+    background-color: #b8aeae00;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    &:hover {
+        background-color: #d2d2d2;
+        
+        border-radius: 5px 5px 0 0;
+    }
+    &.active {
+        background-color: #fff; /* Màu khi đang ở trang hiện tại */
+        color: rgb(10, 10, 10);
+        font-weight: bold;
+        border-radius: 5px 5px 0 0;
+        box-shadow: 0 5px 0 #fff;
+        
+    }
+}

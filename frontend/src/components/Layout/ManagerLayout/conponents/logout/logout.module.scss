@@ -1,0 +1,13 @@
+.btn-logout{
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    border-radius:50% ;
+    border: none;
+    box-shadow: 1px 1px 3px #454444 ;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover{
+        background-color: #d2d2d2;
+    }
+}
