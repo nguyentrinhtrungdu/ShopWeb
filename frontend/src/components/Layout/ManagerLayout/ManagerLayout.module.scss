@@ -1,0 +1,19 @@
+.wrapper{
+   
+    position: relative;
+    display: flex;
+    justify-content: start;
+    .left-box{
+        background-color:#b8aeae;
+        width: 80px;
+        border: 4px solid #332c2c88;
+    }
+    .container{
+        padding-top: 80px;
+        width: 100%;
+        height: 800px;
+        border: 4px solid #332c2c88;
+        background-color:#fff;
+        box-shadow: -8px 0 0 #b8aeae;
+    }
+}
