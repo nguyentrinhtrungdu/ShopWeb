@@ -1,0 +1,195 @@
+.wrapper{
+    position: relative;
+    z-index: 200;
+   
+    .modal{
+        position: fixed;  /* Giữ modal cố định trên màn hình */
+        top: 0;
+        left: 0;
+        width: 100vw;  /* Chiều rộng toàn màn hình */
+        height: 100vh; /* Chiều cao toàn màn hình */
+        background: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
+        display: flex;
+        justify-content: center; /* Căn giữa nội dung */
+        align-items: center;
+        display: flex;
+        justify-content: start;
+        .contents{
+            position: relative;
+            width: 500px;
+            background-color: #fff;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            font-size: 1.8rem;
+            gap: 20px;
+            color: #000;
+            border-radius: 20px;
+            margin-left: 100px;
+            .new-category{
+             
+
+                .btn-new-category{
+                 
+                    width: 100px;
+                    height: 30px;
+                    border-radius: none;
+                    cursor: pointer ;
+                    margin-top: 10px;
+                    border: none ;
+                    
+                }
+            }
+            .btn-closeModel{
+                position: absolute;
+                top: 7px;
+                right: 10px;
+                cursor: pointer;
+               
+            }
+            .form-modal{
+                width: 100%;
+                background-color: #e5e3e3;
+                height: 30px;
+                font-size: 1.9rem;
+                color: black;
+                resize: none;
+                font-family: "Baloo 2", sans-serif;
+                padding-left: 10px ;
+                border-radius: 10px;
+                border: none;
+                &:focus{
+                    box-shadow: 2px 2px 0 #edebeb;
+                    border: 2px solid #d1d0d0;
+                    outline: none;
+                }
+            }
+            .upload-label{
+                width: 100px;
+            }
+            textarea {
+                height: 100px !important;
+            }
+            .btn-upload{
+                cursor: pointer;
+            }
+            .preview-container{
+                display: flex;
+                gap: 2px;
+                height: 100px;
+                display: flex;
+                flex-wrap: wrap;
+               overflow-x:hidden;
+                .image-preview-wrapper{
+                  
+                    /* Ẩn phần ảnh dư */
+                    overflow: hidden;
+                    width: 100px;
+                    height: 100px;
+                    border: 1px solid #ccc;
+                    
+                    position: relative;
+                .image-preview{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    padding: 2px;
+                }    
+                .btn-remove{
+                    position: absolute;
+                    width: 13px;
+                    height: 14px;
+                    font-size: 0.9rem;
+                    top: 5px;
+                    right: 2px;
+                    cursor: pointer;
+                    border-radius: 50%;
+                }
+            }
+            }
+            .size-options{
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                width: 100%;
+                p{
+                    width: 100%;
+                    
+                }
+                
+                .size-label{
+                    display: flex;
+                    .checkbox{
+                        background-color: #e5e3e3 !important;
+                        border: none;
+                        padding-right: 3px;
+                        cursor: pointer;
+                    
+                    }
+                    .sizeofcheckbox{
+                        padding-left: 3px;
+                    }
+                }
+            }
+            .btn-preview{
+                margin: 0 auto;
+              
+               
+            }
+        }
+        .image-modal{
+            padding: 30px;
+            background-color: #fff;
+            position: relative;
+            margin-left: 60px;
+            border-radius: 20px;
+                .image-modal-content{
+                max-width: 600px;
+                width: 500px;
+                .image-full{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    padding: 2px;
+                }
+                }
+                .btn-closeimg{
+                position: absolute;
+                top: 7px;
+                right: 10px;
+                cursor: pointer;
+               
+               }
+        }
+    }
+}
+
+button{
+    width: 100px;
+    height: 40px;
+    border-radius: 40px;
+    border: none;
+    font-size: 1.6rem;
+    box-shadow: 1px 1px 1px #bab8b8;
+    &:hover{
+        background-color: #e1e1e1;
+    }
+}
+.btn-accept{
+ display: flex;
+ margin: 0 auto;
+ gap: 10px;
+}
+.form-modal::-webkit-outer-spin-button,
+.form-modal::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input::placeholder {
+    
+    color: #000;
+   
+}
+textarea{
+    height: 300px;
+}

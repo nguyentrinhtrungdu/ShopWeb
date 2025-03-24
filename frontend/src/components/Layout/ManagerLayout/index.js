@@ -6,7 +6,7 @@ function ManagerLayout({children}) {
     return(
         <div className={cx('wrapper')}>
             <Header />
-            <div className={cx('left-box')}></div>
+            {/* <div className={cx('left-box')}></div> */}
             <div className={cx('container')}>
                 <div className={cx('content')}> {children}</div>
             </div>

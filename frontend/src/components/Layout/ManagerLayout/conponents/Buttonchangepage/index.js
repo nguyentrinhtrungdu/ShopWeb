@@ -13,11 +13,11 @@ function ButtonChangePage({page,label}) {
    
 
     return (
-        <button className={cx('btn-manage', {active: isActive})} 
+        <div className={cx('btn-manage', {active: isActive})} 
         onClick={()=>{navigate(page)}}
         >
         {label}
-        </button>
+        </div>
     );
 }
 
