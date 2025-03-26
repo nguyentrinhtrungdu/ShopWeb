@@ -1,5 +1,4 @@
 import {AnalysisBoard,AddItems} from '../conponent';
-import ProductModal from '../conponent/addItems/autoFocus';
 import styles from '../manage.module.scss';
 import classNames from 'classnames/bind';
 
@@ -10,7 +9,7 @@ function Category() {
         <div className={cx('wrapper')}>
            <div className={cx('contents')}>
             <AddItems/>
-            <ProductModal/>
+            
             <h1> Danh sách sản phẩm</h1>
             <AnalysisBoard endpoint="products" />
             </div>
