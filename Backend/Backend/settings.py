@@ -16,7 +16,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))  # Đọc từ file .env
 
 # Bảo mật & Debug
 SECRET_KEY = env('SECRET_KEY', default='your-default-secret-key')
-DEBUG = env.bool('DEBUG', default=True)
+DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'app.User',
     'app.Product',
     'rest_framework.authtoken',
+    'corsheaders',
+
 ]
 
 # Middleware
@@ -43,6 +45,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Thêm dòng này lên đầu
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'Backend.urls'
@@ -124,3 +128,4 @@ SIMPLE_JWT = {
 
 # Giá trị mặc định cho khóa chính
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CORS_ALLOW_ALL_ORIGINS = True
