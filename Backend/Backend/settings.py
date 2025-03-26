@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'User',
     'Product',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -134,23 +136,16 @@ import os
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'debug.log',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication', 
+    ),
 }
 
-    
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),   # Token hết hạn sau 15 phút
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),       # Refresh token sống trong 1 ngày
+    'ROTATE_REFRESH_TOKENS': True,  # Nếu True, refresh token sẽ tạo mới sau mỗi lần refresh
+    'BLACKLIST_AFTER_ROTATION': True,  # Nếu True, refresh token cũ sẽ bị vô hiệu hóa sau khi refresh
+}   

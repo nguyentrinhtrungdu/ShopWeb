@@ -48,3 +48,4 @@ class UserDetailView(APIView):
             return Response({"status": "Delete User Successfully"}, status=status.HTTP_200_OK)
         except UserModel.DoesNotExist:
             return Response({"error": "User Not Found"}, status=status.HTTP_404_NOT_FOUND)
+   
