@@ -1,13 +1,24 @@
 .login-container{
-
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 1px 1px 5px #94949456;
+    border-radius: 15px;
+    padding: 30px;
     .btn-login{
         font-size: 1.6rem;
-        width: 240px;
-        border: 1px solid #000000;
-        padding: 5px;
+        width: 250px;
+        box-shadow: 1px 1px 5px #94949456;
+        padding: 7px;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 5px;
+        border-radius: 15px;
+        &:hover{
+            background-color: #e2e2e27b;
+        }
     }
 }

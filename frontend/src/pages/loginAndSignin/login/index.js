@@ -7,21 +7,25 @@ import Image from '../../../assets/images'
 const cx = classNames.bind(styles);
 
 function LogIn() {
-   
+        const [onLogin,setOnLogin] = useState()
 
-   
+        const handleOnClickLogin = () =>{
+            setOnLogin();
+        }
    
 
     return (
         <div className={cx("login-container")}>
             <h2>Đăng nhập</h2>
             <form >
-              <div className={cx('btn-login')}>
+              <div className={cx('btn-login')} 
+                 onClick={()=> handleOnClickLogin()}>
               <img src={Image.facebookIcon} alt="Google Logo"  width={20}/> 
               <strong>  Đăng nhập bằng Facebook</strong>
             
               </div>
-              <div className={cx('btn-login')}>
+              <div className={cx('btn-login')} 
+                onClick={()=> handleOnClickLogin()}>
               <img src={Image.googleIcon} alt="Google Logo"  width={20}/> 
              
               <strong> Đăng nhập bằng Google</strong>
