@@ -1,18 +1,22 @@
 .wrapper{
     background-color:#ffffff;
-    height: 80px;
-    position: fixed;
+    height: 90px;
+    
     width: 100%;
+    z-index: 100;
+    position: relative;
     .content{
-      background-color:#b8aeae;
+      width: 100%;
+      position: fixed;
+      background-color:#ededed;
       padding: 0 80px;
-      height: 100%;
+      height: 90px;
       border-radius:  50px 50px 0 0;
       display: flex;
       align-items: end;
-      position: relative;
-      border: 4px solid #332c2c88;
-      border-bottom: none;
+      // position: relative;
+      box-shadow: inset 1px 1px 10px rgba(22, 22, 22, 0.3);
+      box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.3);
       .title-container{
         padding-right: 30px;
         display: flex;

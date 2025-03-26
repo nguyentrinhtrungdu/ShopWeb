@@ -8,13 +8,13 @@ import Orders from '../pages/manage/Orders'
 
 const publicRoutes = [
     { path: '/' , Component: Home},
-    { path: '/Payment' , Component: Payment},
+    { path: '/payment' , Component: Payment},
    
 ]
 const privateRoutes = [
-    { path: '/Category' , Component: Category, layout: ManagerLayout},
-    { path: '/Account' , Component: Account, layout: ManagerLayout},
-    { path: '/Orders' , Component: Orders, layout: ManagerLayout},
+    { path: '/category' , Component: Category, layout: ManagerLayout},
+    { path: '/account' , Component: Account, layout: ManagerLayout},
+    { path: '/orders' , Component: Orders, layout: ManagerLayout},
   
 ]
  export {privateRoutes, publicRoutes}

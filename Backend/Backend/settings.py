@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'Backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shopappdb',  # Tên cơ sở dữ liệu
+        'NAME': 'ShopWeb',  # Tên cơ sở dữ liệu
         'USER': 'root',  # Tên người dùng
         'PASSWORD': '',  # Mật khẩu là rỗng
         'HOST': 'localhost',

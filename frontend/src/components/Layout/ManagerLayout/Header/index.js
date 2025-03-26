@@ -11,9 +11,15 @@ function Header() {
               <h1>TRANG QUẢN LÝ</h1>
           </div>
           <div className={cx('btn-container')}>
+<<<<<<< HEAD
+              <ButtonChangePage page="/category" label={"Quản lý kho"}/>
+              <ButtonChangePage page="/orders" label={"Quản lý đơn hàng"}/>
+              <ButtonChangePage page="/account" label={"Quản lý tài khoản"}/>
+=======
               <ButtonChangePage page="/Category" label={"Quản lý kho"}/>
               <ButtonChangePage page="/Orders" label={"Quản lý đơn hàng"}/>
               <ButtonChangePage page="/Account" label={"Quản lý tài khoản"}/>
+>>>>>>> main
               
           </div>
           <div className={cx('logout-container')}>
