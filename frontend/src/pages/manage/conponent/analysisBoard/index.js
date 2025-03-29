@@ -1,7 +1,6 @@
 import styles from './analysisBoard.module.scss';
 import classNames from 'classnames/bind';
 import { useState, useEffect } from "react";
-import { fetchData } from '../../../../services/api'; // Import API service
 import ShowInfor from '../showInfor';
 import axios  from 'axios';
 const cx= classNames.bind(styles)
@@ -31,8 +30,6 @@ function AnalysisBoard({ endpoint }) {
                     setColumns(Object.keys(res.data.data[0]))
                     setData(res.data.data);
                    
-                    
-                    
                 }
 
                             

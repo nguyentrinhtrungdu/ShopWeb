@@ -7,6 +7,7 @@ const apiClient = axios.create({
 });
  const endpoint = {
         user : "http://127.0.0.1:8000/User/",
+        product : "http://127.0.0.1:8000/Product/",
     }
 
 
