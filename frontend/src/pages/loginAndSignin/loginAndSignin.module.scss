@@ -4,21 +4,33 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    box-shadow: 1px 1px 5px #94949456;
+    box-shadow: 1px 1px 5px #94949499;
     border-radius: 15px;
-    padding: 30px;
-    .btn-login{
-        font-size: 1.6rem;
-        width: 250px;
-        box-shadow: 1px 1px 5px #94949456;
-        padding: 7px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        border-radius: 15px;
-        &:hover{
-            background-color: #e2e2e27b;
+    padding: 50px;
+    margin-top: 150px;
+    .contents{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 15px;
+        .Logo{
+            width: 300px;
+        }
+        .btn-login{
+            font-size: 1.6rem;
+            width: 250px;
+            box-shadow: 1px 1px 5px #94949499;
+
+            padding: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            border-radius: 15px;
+            &:hover{
+                background-color: #e2e2e27b;
+            }
         }
     }
 }

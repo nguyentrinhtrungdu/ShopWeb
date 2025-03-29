@@ -134,3 +134,4 @@ AUTHENTICATION_BACKENDS = [
 # Giá trị mặc định cho khóa chính
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
+DEBUG = True

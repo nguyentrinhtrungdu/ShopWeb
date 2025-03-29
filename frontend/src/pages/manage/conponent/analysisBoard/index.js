@@ -1,7 +1,6 @@
 import styles from './analysisBoard.module.scss';
 import classNames from 'classnames/bind';
 import { useState, useEffect } from "react";
-import { fetchData } from '../../../../services/api'; // Import API service
 import ShowInfor from '../showInfor';
 import axios  from 'axios';
 const cx= classNames.bind(styles)
@@ -31,8 +30,6 @@ function AnalysisBoard({ endpoint }) {
                     setColumns(Object.keys(res.data.data[0]))
                     setData(res.data.data);
                    
-                    
-                    
                 }
 
                             
@@ -66,9 +63,16 @@ function AnalysisBoard({ endpoint }) {
                     <tbody>
                         {data.map((row, index) => (
                             <tr className={cx('row-table')} key={index} onClick={()=>handleClickRow(row)}>
-                                {columns.map((col) => (
-                                    <td key={col}>{row[col]}</td>
-                                ))}
+                            {columns.map((col) => (
+                                <td key={col}>
+                                    {col === "image" ? (
+                                        <img src={row[col]} alt="image" width="50" height="50" />
+                                    ) : (
+                                        row[col]
+                                    )}
+                                </td>
+                            ))}
+
                             </tr>
                         ))}
                     </tbody>
