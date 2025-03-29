@@ -63,9 +63,16 @@ function AnalysisBoard({ endpoint }) {
                     <tbody>
                         {data.map((row, index) => (
                             <tr className={cx('row-table')} key={index} onClick={()=>handleClickRow(row)}>
-                                {columns.map((col) => (
-                                    <td key={col}>{row[col]}</td>
-                                ))}
+                            {columns.map((col) => (
+                                <td key={col}>
+                                    {col === "image" ? (
+                                        <img src={row[col]} alt="image" width="50" height="50" />
+                                    ) : (
+                                        row[col]
+                                    )}
+                                </td>
+                            ))}
+
                             </tr>
                         ))}
                     </tbody>
