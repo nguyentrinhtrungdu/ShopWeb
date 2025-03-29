@@ -151,5 +151,22 @@ class callbackGG(APIView):
         headers = {"Authorization": f"Bearer {access_token}"}
         user_info_response = requests.get(user_info_url, headers=headers)
         user_info = user_info_response.json()
-
-        return Response({"user_info": user_info})
+        email = user_info.get('email')
+        fullname = user_info.get('name')
+        kt = UserModel.objects.filter(email=email).first()
+        print(kt)
+        if kt:
+            user_data = self.serializer_class(kt).data
+            print('user_data',user_data)
+            refresh = RefreshToken.for_user(kt)
+            access_token = str(refresh.access_token)
+            return Response({'message': 'Đăng nhap User thành công', 'data': user_data,'access_token':access_token}, status=status.HTTP_200_OK)
+        mydata = self.serializer_class(data={"fullname": fullname, "email": email})
+        print("data",mydata)
+        if mydata.is_valid():
+            user=mydata.save()
+            print(user)
+            refresh = RefreshToken.for_user(user)
+            access_token = str(refresh.access_token)
+            return Response({'message': 'Đăng ký User thành công', 'data': mydata.data,'token':access_token}, status=status.HTTP_201_CREATED)
+        return Response({'error': 'Đăng nhập thất bại'}, status=status.HTTP_400_BAD_REQUEST)
