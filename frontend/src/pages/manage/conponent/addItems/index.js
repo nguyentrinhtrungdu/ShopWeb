@@ -99,7 +99,7 @@ function AddItems({ apiUrl }) {
             else{
                 if (updatedPreviews.length > 0) {
                     // Nếu ảnh bị xóa là ảnh đầu tiên, chuyển sang ảnh tiếp theo
-                    setSelectedImage(updatedPreviews[nextIndex]?.url );
+                    setSelectedImage(selectedImage );
             }
              }
     
