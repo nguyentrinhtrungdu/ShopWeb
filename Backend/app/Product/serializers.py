@@ -12,7 +12,10 @@ class CustomProductSerializer(serializers.ModelSerializer):
         fields = ['id', 'typeProduct', 'name', 'price', 'description', 'size', 'image']
 
     def get_image(self, obj):
-     return obj.image if obj.image else []
+        request = self.context.get('request', None)
+        if request and obj.image:
+            return [request.build_absolute_uri(img) for img in obj.image]
+        return obj.image if obj.image else []
 
     def create(self, validated_data):
         request = self.context.get('request')
