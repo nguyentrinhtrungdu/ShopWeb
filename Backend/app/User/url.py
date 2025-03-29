@@ -9,4 +9,5 @@ urlpatterns = [
     path('facebook/callback/',views.CallbackFb.as_view()),
     path('google/login/',views.LoginGG.as_view()),
     path('google/callback/',views.callbackGG.as_view()),
+    path('loginAdmin/',views.AdminView.as_view())
 ]
