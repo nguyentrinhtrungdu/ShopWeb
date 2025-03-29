@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'app.Product',
     'rest_framework.authtoken',
     'corsheaders',
+    "social_django"
 
 ]
 
@@ -125,6 +126,10 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
 }
+AUTHENTICATION_BACKENDS = [
+    "social_core.backends.google.GoogleOAuth2",  # Google OAuth2
+    "django.contrib.auth.backends.ModelBackend",
+]
 
 # Giá trị mặc định cho khóa chính
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
