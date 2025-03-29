@@ -3,17 +3,21 @@ from rest_framework.views import APIView
 from rest_framework import status 
 from .models import UserModel
 from .serializers import CustomUserSerializer
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.shortcuts import redirect 
 import requests
+import environ
 
-Fb_APP_ID ="1016913946996512"
-Fb_APP_SECERT = "d9d9d9f70b6f73cec99c1995f75e77a5"
-FB_REDIRECT_URI = "http://localhost:8000/User/facebook/callback"
+env = environ.Env()
+environ.Env.read_env()
+
+print(env('Fb_APP_ID'))
+Fb_APP_ID =env('Fb_APP_ID')
+Fb_APP_SECERT =env('Fb_APP_SECERT')
+FB_REDIRECT_URI = env('FB_REDIRECT_URI')
+GG_CLIENT_ID=env('GG_CLIENT_ID')
+GG_CLIENT_SECRET=env('GG_CLIENT_SECRET')
+GOOGLE_REDIRECT_URI=env('GOOGLE_REDIRECT_URI')
 
 class UserView(APIView):
     def get(self, request):
@@ -103,3 +107,49 @@ class CallbackFb(APIView):
                     return Response({'message': 'Đăng ký User thành công', 'data': mydata.data,'token':access_token}, status=status.HTTP_201_CREATED)
                 
         return Response({'error': 'Đăng nhập thất bại'}, status=status.HTTP_400_BAD_REQUEST)
+
+class LoginGG(APIView):
+    def get(self,request,*args, **kwargs):       
+        google_auth_url = (
+        f"https://accounts.google.com/o/oauth2/auth"
+        f"?response_type=code"
+        f"&client_id={GG_CLIENT_ID}"
+        f"&redirect_uri={GOOGLE_REDIRECT_URI}"
+        f"&scope=openid email profile"
+        f"&access_type=offline"
+        f"&prompt=consent"
+        )
+        return redirect(google_auth_url)
+class callbackGG(APIView):
+    serializer_class = CustomUserSerializer
+    def get(self,request,*args, **kwargs):
+        code = request.GET.get('code')
+        print("code",code)
+        if not code:
+            return Response({"error": "No code provided"}, status=400)
+
+        token_url = "https://oauth2.googleapis.com/token"
+        data = {
+            "code":code,
+            "client_id":GG_CLIENT_ID,
+            "client_secret":GG_CLIENT_SECRET,
+            "redirect_uri":GOOGLE_REDIRECT_URI,
+            "grant_type": "authorization_code",
+        }
+
+    
+        response = requests.post(token_url, data=data)
+        token_info = response.json()
+
+        if "access_token" not in token_info:
+            return Response({"error": "Invalid code"}, status=400)
+
+        access_token = token_info["access_token"]
+
+    
+        user_info_url = "https://www.googleapis.com/oauth2/v3/userinfo"
+        headers = {"Authorization": f"Bearer {access_token}"}
+        user_info_response = requests.get(user_info_url, headers=headers)
+        user_info = user_info_response.json()
+
+        return Response({"user_info": user_info})
