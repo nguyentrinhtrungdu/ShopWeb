@@ -3,17 +3,18 @@ from rest_framework.views import APIView
 from rest_framework import status 
 from .models import UserModel
 from .serializers import CustomUserSerializer
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.shortcuts import redirect 
 import requests
+import environ
 
-Fb_APP_ID ="1016913946996512"
-Fb_APP_SECERT = "d9d9d9f70b6f73cec99c1995f75e77a5"
-FB_REDIRECT_URI = "http://localhost:8000/User/facebook/callback"
+env = environ.Env()
+environ.Env.read_env()
+
+print(env('Fb_APP_ID'))
+Fb_APP_ID =env('Fb_APP_ID')
+Fb_APP_SECERT =env('Fb_APP_SECERT')
+FB_REDIRECT_URI = env('FB_REDIRECT_URI')
 
 class UserView(APIView):
     def get(self, request):
@@ -103,3 +104,4 @@ class CallbackFb(APIView):
                     return Response({'message': 'Đăng ký User thành công', 'data': mydata.data,'token':access_token}, status=status.HTTP_201_CREATED)
                 
         return Response({'error': 'Đăng nhập thất bại'}, status=status.HTTP_400_BAD_REQUEST)
+
