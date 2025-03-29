@@ -11,10 +11,10 @@ function Category() {
     return (
         <div className={cx('wrapper')}>
            <div className={cx('contents')}>
-            <AddItems/>
+            <AddItems apiUrl={"http://127.0.0.1:8000/Product/"}/>
             
             <h1> Danh sách sản phẩm</h1>
-            <AnalysisBoard endpoint={endpoint.products} />
+            <AnalysisBoard endpoint={endpoint.product} />
             </div>
         </div>
     );

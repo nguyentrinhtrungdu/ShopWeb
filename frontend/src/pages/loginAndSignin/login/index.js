@@ -17,11 +17,14 @@ function LogIn() {
     return (
         <div className={cx("login-container")}>
             <h2>Đăng nhập</h2>
-            <form >
+            <form className={cx('contents')}>
+              <div >
+                <img src={Image.logo} alt="Shop Logo"  className={cx('Logo')}/>
+              </div>
               <div className={cx('btn-login')} 
                  onClick={()=> handleOnClickLogin()}>
-              <img src={Image.facebookIcon} alt="Google Logo"  width={20}/> 
-              <strong>  Đăng nhập bằng Facebook</strong>
+                <img src={Image.facebookIcon} alt="Logo"  width={20}/> 
+                <strong>  Đăng nhập bằng Facebook</strong>
             
               </div>
               <div className={cx('btn-login')} 
