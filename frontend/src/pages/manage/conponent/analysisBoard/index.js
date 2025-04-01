@@ -66,7 +66,7 @@ function AnalysisBoard({ endpoint }) {
                             {columns.map((col) => (
                                 <td key={col}>
                                     {col === "image" ? (
-                                        <img src={row[col]} alt="image" width="50" height="50" />
+                                        <img src={`http://localhost:8000/${row[col][0]}`} alt="image" width="50" height="50" />
                                     ) : (
                                         row[col]
                                     )}
