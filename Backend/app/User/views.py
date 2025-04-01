@@ -1,12 +1,13 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status 
-from .models import UserModel
-from .serializers import CustomUserSerializer
+from .models import UserModel,AdminModel
+from .serializers import CustomUserSerializer,CustomAdminSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.shortcuts import redirect 
 import requests
 import environ
+from django.contrib.auth.hashers import check_password
 
 env = environ.Env()
 environ.Env.read_env()
@@ -170,3 +171,20 @@ class callbackGG(APIView):
             access_token = str(refresh.access_token)
             return Response({'message': 'Đăng ký User thành công', 'data': mydata.data,'token':access_token}, status=status.HTTP_201_CREATED)
         return Response({'error': 'Đăng nhập thất bại'}, status=status.HTTP_400_BAD_REQUEST)
+    
+class AdminView(APIView):
+    def get(self,request,*args, **kwargs):
+        data = AdminModel.objects.all()
+        serializer = CustomAdminSerializer(data, many=True)
+        return Response({"data":serializer.data})
+    def post(self, request, *args, **kwargs):
+        username = request.data.get("username")
+        password = request.data.get("password")
+        user = AdminModel.objects.filter(username=username).first()
+        refresh = RefreshToken.for_user(user)
+        access_token = str(refresh.access_token)
+        if user:
+             if check_password(password, user.password):
+                  return Response({"message": "Đăng nhập thành công!","access_token":access_token}, status=status.HTTP_200_OK)
+        return Response({"message": "Tài khoản hoặc mật khẩu không đúng!"},status=status.HTTP_400_BAD_REQUEST)
+       
